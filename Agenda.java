@@ -3,11 +3,33 @@
 import java.util.Scanner;
 
 class Contato {
-    String nome;
-    String telefone;
+    private String nome;
+    private String telefone;
+
+    public boolean setNome(String nome) {
+        if (nome == null || nome.trim().isEmpty()) return false; 
+
+        this.nome = nome;
+        return true;
+    }
+
+    public boolean setTelefone(String telefone) {
+        if(telefone == null || telefone.length() < 8) return false;
+
+        this.telefone = telefone;
+        return true;
+    }
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    public String getTelefone() {
+        return this.telefone;
+    }
 
     void exibe() {
-        System.out.println(nome + " - " + telefone);
+        System.out.println(getNome() + " - " + getTelefone());
     }
 }
 
@@ -23,11 +45,20 @@ public class Agenda {
     static void adiciona(String name, String number) {
         if (quantity < contatos.length) {
             Contato c = new Contato();
-            c.nome = name;
-            c.telefone = number;
+
+            if(!c.setNome(name)) {
+                System.out.println("ERRO: nome inválido.");
+                return;
+            }
+
+            if(!c.setTelefone(number)) {
+                System.err.println("ERRO: o número deve conter no mínimo 8 caracteres!");
+                return;
+            }
             
             contatos[quantity] = c;
             ++quantity;
+            
             printMessage("Contato adicionado com sucesso!");
         } else {
             printMessage("Agenda cheia! Não é possível adicionar mais contatos.");
