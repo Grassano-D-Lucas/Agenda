@@ -1,14 +1,14 @@
 package Projeto;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Agenda {
     
-    static Contato[] contatos = new Contato[3]; 
-    static int quantity = 0;
+    static List<Contato> contatos = new ArrayList<>(); 
 
     static void adiciona(String name, String number) {
-        if (quantity < contatos.length) {
             Contato c = new Contato();
 
             if(!c.setNome(name)) {
@@ -21,24 +21,21 @@ public class Agenda {
                 return;
             }
             
-            contatos[quantity] = c;
-            ++quantity;
+            contatos.add(c);
             
             System.out.println("Contato adicionado com sucesso!");
-        } else {
-            System.out.println("Agenda cheia! Não é possível adicionar mais contatos.");
-        }
+        
     }
 
     static void lista() {
-        if (quantity == 0) {
+        if (contatos.isEmpty()) {
             System.out.println("\nNenhum contato cadastrado.");
         } else {
             System.out.println("\n=== LISTA DE CONTATOS ===");
 
-            for (int i = 0; i < quantity; ++i) {
+            for (int i = 0; i < contatos.size(); i++) {
                 System.out.print((i + 1) + ". ");
-                contatos[i].exibe(); // Chama o método de exibição do objeto Contato
+                contatos.get(i).exibe(); // Chama o método de exibição do objeto Contato
             }
             System.out.println("==========================");
         }
