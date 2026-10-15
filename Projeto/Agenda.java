@@ -8,15 +8,15 @@ public class Agenda {
     
     static List<Contato> contatos = new ArrayList<>(); 
 
-    static void adiciona(String name, String number) {
-            Contato c = new Contato(name, number);
+    static void adiciona(String nome, String numero) {
+            Contato c = new Contato(nome, numero);
 
-            if(!c.setNome(name)) {
+            if(!c.setNome(nome)) {
                 System.out.println("ERRO: nome inválido.");
                 return;
             }
 
-            if(!c.setTelefone(number)) {
+            if(!c.setTelefone(numero)) {
                 System.out.println("ERRO: o número deve conter no mínimo 8 caracteres!");
                 return;
             }
@@ -36,8 +36,9 @@ public class Agenda {
 
             for (int i = 0; i < contatos.size(); i++) {
                 System.out.print((i + 1) + ". " + contatos.get(i));
+                System.out.println(" ");
             }
-            System.out.println("\n==========================");
+            System.out.println("=========================");
         }
     }
 
@@ -48,7 +49,7 @@ public class Agenda {
         }
 
         boolean encontrou = false;
-        System.out.println("\n==========================");
+        System.out.println("\n=========================");
         for(Contato c : contatos) {
             if(c.getNome().toLowerCase().contains(termo.toLowerCase())) { // condição que verifica o nome da lista de contatos
                 System.out.println("- " + c);                             // método nativo do Java ".toLowerCase" converte todos os caracteres em minúsculo
@@ -62,7 +63,7 @@ public class Agenda {
         else {
             System.out.println("Contato encontrado com sucesso!");
         }
-        System.out.println("\n==========================");
+        System.out.println("==========================");
     }
 
     static void removerContato(Scanner keyboard) {
@@ -100,7 +101,7 @@ public class Agenda {
             System.out.println("3. Procurar contato");
             System.out.println("4. Remover Contato");
             System.out.println("5. Sair da Agenda");
-            System.out.println("Digite sua opção: ");
+            System.out.println("\nDigite sua opção: ");
 
             option = keyboard.nextInt();
             keyboard.nextLine();
@@ -133,7 +134,7 @@ public class Agenda {
                     break;
 
                 default:
-                    System.out.println("Opção inválida! Tente novamente");
+                    System.out.println("Opção inválida! Tente novamente.");
             }
 
         } while (option != 5);
