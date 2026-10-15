@@ -5,10 +5,6 @@ public class Contato {
     private String telefone;
     private static int totalDeContatos = 0;
 
-    public Contato() {
-        Contato.totalDeContatos++;
-    }
-
     public Contato(String nome, String telefone) {
         this.setNome(nome);
         this.setTelefone(telefone);
@@ -41,7 +37,8 @@ public class Contato {
         return this.telefone;
     }
 
-    void exibe() {
-        System.out.println(getNome() + " - " + getTelefone());
+    @Override 
+    public String toString() {
+        return this.nome + " - " + this.telefone;
     }
 }

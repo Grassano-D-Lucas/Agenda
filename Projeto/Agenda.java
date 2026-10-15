@@ -9,7 +9,7 @@ public class Agenda {
     static List<Contato> contatos = new ArrayList<>(); 
 
     static void adiciona(String name, String number) {
-            Contato c = new Contato();
+            Contato c = new Contato(name, number);
 
             if(!c.setNome(name)) {
                 System.out.println("ERRO: nome inválido.");
@@ -34,10 +34,9 @@ public class Agenda {
             System.out.println("\n=== LISTA DE CONTATOS ===");
 
             for (int i = 0; i < contatos.size(); i++) {
-                System.out.print((i + 1) + ". ");
-                contatos.get(i).exibe(); // Chama o método de exibição do objeto Contato
+                System.out.print((i + 1) + ". " + contatos.get(i));
             }
-            System.out.println("==========================");
+            System.out.println("\n==========================");
         }
     }
 
